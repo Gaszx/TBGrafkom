@@ -270,7 +270,7 @@ void gambarSumbu() {//jadi ini teh buat menggambar sumbu kordinat
     // Sumbu X 
     glColor3f(1.0, 0.0, 0.0); //merah
     glVertex3f(-15.0, 0.0, 0.0); 
-    glVertex3f(15.0, 0.0, 0.0);/
+    glVertex3f(15.0, 0.0, 0.0);
     // Sumbu Y 
     glColor3f(0.0, 1.0, 0.0); //hejo
     glVertex3f(0.0, -10.0, 0.0);
@@ -370,8 +370,8 @@ void tampilan() {
 
 /////////////////////////////////////////////////// Firman ///////////////////////////////////////////////////////////////
 void inisialisasi() {
-    glEnable(GL_DEPTH_TEST);//
-    glEnable(GL_LIGHTING);// 
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING); 
     glEnable(GL_LIGHT0);
     glEnable(GL_COLOR_MATERIAL);// Kanggo ngasih warna.
     glClearColor(0.2, 0.2, 0.2, 1.0);// Menentukan warna latar belakang 
@@ -380,12 +380,11 @@ void inisialisasi() {
     GLfloat posisi_cahaya[] = {0.0f, 0.0f, -14.0f, 1.0f};
     GLfloat cahaya_diffuse[] = {1.0f, 0.5f, 0.0f, 1.0f};	
     GLfloat cahaya_ambient[] = {0.3f, 0.3f, 0.3f, 1.0f};//	cahaya ruangan
-    GLfloat cahaya_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};//	(highlight) yang dipantulkan dari permukaan mengkilap.
+   
 
     glLightfv(GL_LIGHT0, GL_POSITION, posisi_cahaya);// posisi cahaya
     glLightfv(GL_LIGHT0, GL_DIFFUSE, cahaya_diffuse);
     glLightfv(GL_LIGHT0, GL_AMBIENT, cahaya_ambient);//menentukan warna cahaya
-    glLightfv(GL_LIGHT0, GL_SPECULAR, cahaya_specular); 
 }
 
 // mengatur proyeksi
