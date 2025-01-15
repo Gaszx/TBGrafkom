@@ -1,9 +1,11 @@
+/////////////////////////////////////////////////// Bagas ///////////////////////////////////////////////////////////////
+
 #include <GL/glut.h>
 #include <cmath>
 
 // Variabel kamera
 float posisi_kamera_x = 0.0f, posisi_kamera_y = 2.0f, posisi_kamera_z = 10.0f; // Posisi kamera
-float sudut_kamera_yaw = 0.0f, sudut_kamera_pitch = 0.0f; // Sudut kamera
+float sudut_kamera_yaw = 9.0f, sudut_kamera_pitch = 0.5f; // Sudut kamera
 
 // Variabel transformasi makanan
 float skala_makanan = 1.0f;
@@ -81,7 +83,7 @@ void gambarRuangan() {
 void gambarMeja(float x, float y, float z, float panjang, float lebar, float tinggi, float rotasi) {
     glPushMatrix();
     glTranslatef(x, y, z);
-    glRotatef(rotasi, 0.0f, 1.0f, 0.0f);
+    glRotatef(rotasi, 0.0f, 9.0f, 0.0f);
     glScalef(panjang, tinggi, lebar);
 
     glColor3f(0.5, 0.35, 0.05); // Warna kayu
@@ -220,8 +222,9 @@ void gambarMakananDiMeja(float posisi_meja_x, float posisi_meja_y, float posisi_
 
     glPopMatrix();
 }
+//=========================================================================================================================//
 
-/////////////////////////////////////////////////// Bagas ///////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////// Romy ///////////////////////////////////////////////////////////////
 
 void aturKamera() {
     float arah_kamera_x = sin(sudut_kamera_yaw);
@@ -259,28 +262,29 @@ void klikMouse(int tombol, int state, int x, int y) {
         mouse_aktif = false;
     }
 }
+//=========================================================================================================================//
 
-/////////////////////////////////////////////////// Romy ///////////////////////////////////////////////////////////////
-
-void gambarSumbu() {
+/////////////////////////////////////////////////// FIRMAN ///////////////////////////////////////////////////////////////
+void gambarSumbu() {//jadi ini teh buat menggambar sumbu kordinat
     glBegin(GL_LINES);
     // Sumbu X 
-    glColor3f(1.0, 0.0, 0.0); 
-    glVertex3f(-15.0, 0.0, 0.0);
-    glVertex3f(15.0, 0.0, 0.0);
+    glColor3f(1.0, 0.0, 0.0); //merah
+    glVertex3f(-15.0, 0.0, 0.0); 
+    glVertex3f(15.0, 0.0, 0.0);/
     // Sumbu Y 
-    glColor3f(0.0, 1.0, 0.0); 
-    glVertex3f(0.0, -2.0, 0.0);
+    glColor3f(0.0, 1.0, 0.0); //hejo
+    glVertex3f(0.0, -10.0, 0.0);
     glVertex3f(0.0, 10.0, 0.0);
     // Sumbu Z 
-    glColor3f(0.0, 0.0, 1.0); 
-    glVertex3f(0.0, 0.0, -15.0);
+    glColor3f(0.0, 0.0, 1.0); //biru
+    glVertex3f(0.0, 0.0, -15.0);// titik
     glVertex3f(0.0, 0.0, 15.0);
     glEnd();
 }
+//=========================================================================================================================//
 
-/////////////////////////////////////////////////// FIRMAN ///////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////// Romy ///////////////////////////////////////////////////////////////
 void keyboard(unsigned char key, int x, int y) {
     float kecepatan_gerak = 0.5f;
     float arah_x = sin(sudut_kamera_yaw);
@@ -310,9 +314,9 @@ void keyboard(unsigned char key, int x, int y) {
     batasiPosisiKamera();
     glutPostRedisplay();
 }
+//=========================================================================================================================//
 
-/////////////////////////////////////////////////// Romy ///////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////// Bagas ///////////////////////////////////////////////////////////////
 void animasiApi(int value) {
     if (api_membesar) {
         ukuran_api += 0.05f;
@@ -324,17 +328,18 @@ void animasiApi(int value) {
     glutPostRedisplay();
     glutTimerFunc(100, animasiApi, 0); //mengatur animasi atau tindakan berulang
 }
+//=========================================================================================================================//
 
-/////////////////////////////////////////////////// Bagas ///////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void gambarKarpet(float x, float z, float panjang, float lebar) {
     glPushMatrix();
     glTranslatef(x, -2.0f, z);
 
-    glColor3f(0.6, 0.0, 0.0); 
+    glColor3f(5.0, 0.0, 0.0); //warna
     glRotatef(90.0f, 0.0f, 1.0f, 0.0f); 
     glScalef(panjang, 0.05f, lebar); 
-    glutSolidCube(1.0); 
+    glutSolidCube(1.0);// warna bawah 
     glPopMatrix();
 }
 // rendering
@@ -360,36 +365,39 @@ void tampilan() {
     
     glutSwapBuffers();
 }
-/////////////////////////////////////////////////// Romy ///////////////////////////////////////////////////////////////
+//=========================================================================================================================//
 
+
+/////////////////////////////////////////////////// Firman ///////////////////////////////////////////////////////////////
 void inisialisasi() {
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);//
+    glEnable(GL_LIGHTING);// 
     glEnable(GL_LIGHT0);
-    glEnable(GL_COLOR_MATERIAL);
-    glClearColor(0.2, 0.2, 0.2, 1.0);
+    glEnable(GL_COLOR_MATERIAL);// Kanggo ngasih warna.
+    glClearColor(0.2, 0.2, 0.2, 1.0);// Menentukan warna latar belakang 
 
     // posisi cahaya
-    GLfloat posisi_cahaya[] = {0.0f, 0.0f, -13.0f, 1.0f};
-    GLfloat cahaya_diffuse[] = {1.0f, 0.5f, 0.0f, 1.0f};
-    GLfloat cahaya_ambient[] = {0.2f, 0.1f, 0.0f, 1.0f};
-    GLfloat cahaya_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    GLfloat posisi_cahaya[] = {0.0f, 0.0f, -14.0f, 1.0f};
+    GLfloat cahaya_diffuse[] = {1.0f, 0.5f, 0.0f, 1.0f};	
+    GLfloat cahaya_ambient[] = {0.3f, 0.3f, 0.3f, 1.0f};//	cahaya ruangan
+    GLfloat cahaya_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};//	(highlight) yang dipantulkan dari permukaan mengkilap.
 
-    glLightfv(GL_LIGHT0, GL_POSITION, posisi_cahaya);
+    glLightfv(GL_LIGHT0, GL_POSITION, posisi_cahaya);// posisi cahaya
     glLightfv(GL_LIGHT0, GL_DIFFUSE, cahaya_diffuse);
-    glLightfv(GL_LIGHT0, GL_AMBIENT, cahaya_ambient);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, cahaya_specular);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, cahaya_ambient);//menentukan warna cahaya
+    glLightfv(GL_LIGHT0, GL_SPECULAR, cahaya_specular); 
 }
 
 // mengatur proyeksi
 void reshape(int w, int h) {
-    glViewport(0, 0, w, h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45.0, (float)w / h, 1.0, 100.0);
-    glMatrixMode(GL_MODELVIEW);
+    glViewport(0, 0, w, h);//Ini memastikan bahwa viewport mencakup seluruh jendela
+    glMatrixMode(GL_PROJECTION);//memberi tahu OpenGL bahwa perubahan berikutnya akan diterapkan pada matriks proyeksi.
+    glLoadIdentity();//Mengatur matriks aktif menjadi matriks identitas (default).
+    gluPerspective(45.0, (float)w / h, 1.0, 100.0);//objek yang lebih jauh dari kamera terlihat lebih kecil
+    glMatrixMode(GL_MODELVIEW);//Mengembalikan matriks aktif ke mode Model-View.
 }
-/////////////////////////////////////////////////// Firman ///////////////////////////////////////////////////////////////
+//=========================================================================================================================//
+
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
